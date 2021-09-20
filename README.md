@@ -7,8 +7,6 @@
     2.d HP
     2.e LENOVO
     2.f MSI
-    2.g GIGABYTE
-    2.h DELL
 3- Crear la base de datos para que ya quede lista 
 4- Arrancar a codear
 5-
