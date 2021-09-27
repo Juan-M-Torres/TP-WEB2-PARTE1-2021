@@ -24,11 +24,30 @@ class controllerGabinetes{
        $this->view->showGabinetes($data);
       }
  
-      function borrarGabinetes($params = null){
+   function borrarGabinetes($params = null){
  
          $id = $params[':ID'];
-         $this->modelComponentes->deleteGabinetes($id);
+         $this->modelGabinetes->deleteGabinetes($id);
          $this->view->locationGabinetes();
  
-      } 
+   } 
+
+      function agregarGabinetes(){
+         if(isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer'])) {
+            if(!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer'])){
+                $nombreAgre = $_POST['nombre'];
+                $marcaAgre = $_POST['marca'];
+                $gamerAgre = $_POST['gamer'];
+                if($gamerAgre == "si"){
+                  $gamerAgre = 1;
+                }else{
+                   $gamerAgre = 0;
+                }
+                $this->modelGabinetes->agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre);
+                $this->view->locationGabinetes();     
+            }else{
+                var_dump("Faltan datos obligatorios");        
+            }
+         }
+      }
 }

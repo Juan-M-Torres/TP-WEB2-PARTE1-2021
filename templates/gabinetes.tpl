@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th></th>
+            <th></th>
             <td>Marca</td>
             <td>Nombre</td>
             <td>Gamer</td>
@@ -13,15 +14,15 @@
     {foreach from=$dgabinetes item=dato}
         <tr>
             <td><a href="borrarGabinetes/{$dato->id_gabinetes}"><input type="button" value="borrar"></a></td>
+            <td><a href="editarGabinetes/{$dato->id_gabinetes}"><input type="button" value="editar"></a></td>
             <td>{$dato->marca}</td>
             <td>{$dato->nombre}</td>
-            {if $dato->gamer == TRUE}
+            {if $dato->gamer == TRUE }
                 <td>Si</td>
-            {/if}
-            {if $dato->gamer == FALSE}
+                {else}
                 <td>No</td>
             {/if}
-         
+            
         </tr>
     {/foreach}
     </tbody>
@@ -30,9 +31,12 @@
 <p>Agregar un gabinete</p>
 
 <form action="agregarGabinetes" method="POST">
-<input type="text" name="marcaGabinete" placeholder="Marca del Gabinete" required>
-<input type="text" name ="nombreGabinete" placeholder="Nombre del gabinete" required>
-<input type="text" name="booleanoGamer" placeholder="Es gamer? si o no" required>
+<input type="text" name="marca" placeholder="Marca del Gabinete" required>
+<input type="text" name ="nombre" placeholder="Nombre del gabinete" required>
+<select name="gamer" id="">
+<option value="si">Si</option>
+<option value="no">No</option>
+</select>
 <input type="submit" value="Cargar">
 </form>
 

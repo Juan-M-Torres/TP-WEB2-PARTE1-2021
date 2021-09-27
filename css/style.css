@@ -32,6 +32,9 @@ tr {
     font-size: 25px;
     margin-bottom: 60px;
     background-color: aqua;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .bloque-tabla {

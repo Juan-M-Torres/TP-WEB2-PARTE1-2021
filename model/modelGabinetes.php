@@ -22,5 +22,10 @@ class modelGabinetes{
         
     }
 
+    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre){
+        $query=$this->db->prepare('INSERT INTO gabinetes (marca,nombre,gamer) VALUE (?,?,?)');
+        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre));
+    }
+
       
 }
