@@ -20,6 +20,9 @@
             <li><a class="opciones" href="home">Home</a></li>
             <li><a class="opciones" href="gabinetes">Nuestros Gabinetes</a></li>
             <li><a class="opciones" href="componentes"> Nuestros Componentes</a></li>
+            <li><a class="opciones" href="registro"> Registrate!</a></li>
+            <li><a class="opciones" href="login"> Login</a></li>
+
             
         </ul>
     </nav>
