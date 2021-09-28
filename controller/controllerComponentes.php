@@ -1,16 +1,19 @@
 <?php
     require_once "./view/view.php";
     require_once "./model/modelComponentes.php";
+    require_once "./model/modelGabinetes.php";
 
 
  class controllerComponentes{
  
     private $view;
     private $modelComponentes;
+    private $modelGabinetes;
 
     function __construct() {
         $this->view=new view();
         $this->modelComponentes=new modelComponentes();
+        $this->modelGabinetes=new modelGabinetes();
     }
 
      function home(){
@@ -21,7 +24,8 @@
      function componentes(){
 
       $data = $this->modelComponentes->getComponentes();
-      $this->view->showComponentes($data);
+      $datoGabinete = $this->modelGabinetes->getGabinetes();
+      $this->view->showComponentes($data,$datoGabinete);
      }
 
      function borrarComponente($params = null){
@@ -31,5 +35,31 @@
         $this->view->locationComponentes();
 
      }
+
+     function agregarComponentes(){
+      
+      if(isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion'])) {
+         if(!empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer']) && !empty($_POST['descripcion'])){
+            $dMicro = $_POST['micro'];
+            $dMother = $_POST['mother'];
+            $dRam = $_POST['ram'];
+            $dGamer = $_POST['gamer'];
+            $dDescripcion = $_POST['descripcion'];
+            
+            $this->modelComponentes->addComponente($dMicro,$dMother,$dRam,$dGamer,$dDescripcion);
+            $this->view->locationComponentes();
+         }else{
+            var_dump("Faltan datos obligatorios");
+         }
+      }
+     }
+
+     function verMas($params = null){
+        $id = $params[':ID'];
+        $data = $this->modelComponentes->obtenerDatosComponentes($id);
+        $this->view->showVerMas($data);
+     }
+
+     
      
 }

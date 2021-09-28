@@ -27,5 +27,7 @@ class modelGabinetes{
         $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre));
     }
 
+    
+
       
 }

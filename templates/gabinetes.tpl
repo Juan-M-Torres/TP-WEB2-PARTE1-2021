@@ -5,6 +5,7 @@
         <tr>
             <th></th>
             <th></th>
+            <th></th>
             <td>Marca</td>
             <td>Nombre</td>
             <td>Gamer</td>
@@ -15,6 +16,7 @@
         <tr>
             <td><a href="borrarGabinetes/{$dato->id_gabinetes}"><input type="button" value="borrar"></a></td>
             <td><a href="editarGabinetes/{$dato->id_gabinetes}"><input type="button" value="editar"></a></td>
+            <td><a href="verComponentesAsociados/{$dato->id_gabinetes}"><input type="button" value="ver componentes asociados"></a></td>
             <td>{$dato->marca}</td>
             <td>{$dato->nombre}</td>
             {if $dato->gamer == TRUE }

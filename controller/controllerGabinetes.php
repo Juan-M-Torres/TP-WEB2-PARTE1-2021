@@ -1,16 +1,19 @@
 <?php
    require_once "./view/view.php";
    require_once "./model/modelGabinetes.php";
+   require_once "./model/modelComponentes.php";
 
 
 class controllerGabinetes{
 
    private $view;
    private $modelGabinetes;
+   private $modelComponentes;
 
    function __construct() {
        $this->view=new view();
        $this->modelGabinetes=new modelGabinetes();
+       $this->modelComponentes=new modelComponentes();
    }
 
     function home(){
@@ -50,4 +53,11 @@ class controllerGabinetes{
             }
          }
       }
+
+      function verComponentesAsociados($params = null){
+         $id = $params[':ID'];
+         $data = $this->modelComponentes->VerComponentesAsociadosAgabinete($id);
+         $cantidad = count($data);
+         $this->view->showComponentesAsociados($data,$cantidad);
+        }
 }

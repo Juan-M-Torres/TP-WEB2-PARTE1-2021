@@ -19,7 +19,11 @@
 
     //Agregar
     $r->addRoute("agregarGabinetes", "POST", "controllerGabinetes", "agregarGabinetes");
+    $r->addRoute("agregarComponentes", "POST", "controllerComponentes", "agregarComponentes");
 
+    //Ver Detalles
+    $r->addRoute("verComponentesAsociados/:ID", "GET", "controllerGabinetes", "verComponentesAsociados");
+    $r->addRoute("verMas/:ID", "GET", "controllerComponentes", "verMas");
     //Ruta por defecto.
     $r->setDefaultRoute("controllerComponentes", "home");
     $r->setDefaultRoute("controllerGabinetes", "home");

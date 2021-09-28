@@ -54,3 +54,10 @@ footer {
     text-align: center;
     background-color: gray;
 }
+
+.scroll {
+    max-width: 300px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
