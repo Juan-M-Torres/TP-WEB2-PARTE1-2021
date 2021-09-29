@@ -60,4 +60,5 @@ class controllerGabinetes{
          $cantidad = count($data);
          $this->view->showComponentesAsociados($data,$cantidad);
         }
+
 }

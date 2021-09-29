@@ -40,6 +40,8 @@ class view{
         $this->smarty->display('templates/verDetalleComponentes.tpl');
     }
 
+
+
     function locationComponentes(){
         header("Location: ".BASE_URL."componentes");
     }

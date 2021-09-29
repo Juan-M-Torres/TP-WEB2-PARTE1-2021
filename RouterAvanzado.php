@@ -13,6 +13,7 @@
     $r->addRoute("home", "GET", "controllerComponentes", "home");
     $r->addRoute("componentes", "GET", "controllerComponentes", "componentes");
     $r->addRoute("gabinetes", "GET","controllerGabinetes", "gabinetes");
+
     //Elimar
     $r->addRoute("borrarComponentes/:ID", "GET", "controllerComponentes", "borrarComponente");
     $r->addRoute("borrarGabinetes/:ID", "GET", "controllerGabinetes", "borrarGabinetes");
@@ -24,6 +25,10 @@
     //Ver Detalles
     $r->addRoute("verComponentesAsociados/:ID", "GET", "controllerGabinetes", "verComponentesAsociados");
     $r->addRoute("verMas/:ID", "GET", "controllerComponentes", "verMas");
+
+    //Editar
+    
+
     //Ruta por defecto.
     $r->setDefaultRoute("controllerComponentes", "home");
     $r->setDefaultRoute("controllerGabinetes", "home");

@@ -59,7 +59,5 @@
         $data = $this->modelComponentes->obtenerDatosComponentes($id);
         $this->view->showVerMas($data);
      }
-
-     
-     
-}
+    
+   }

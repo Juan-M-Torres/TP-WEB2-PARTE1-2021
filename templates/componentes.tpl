@@ -18,6 +18,7 @@
             <td>{$dato->ram}</td>
             <td><a href="verMas/{$dato->id_componentes}"><input type="button" value="ver descripcion"></a></td>
             <td><a href="borrarComponentes/{$dato->id_componentes}"><input type="button" value="borrar"></a></td>
+            <td><a href="editarComponentes/{$dato->id_componentes}"><input type="button" value="editar"></a></td>
         </tr>
     {/foreach}
     </tbody>
