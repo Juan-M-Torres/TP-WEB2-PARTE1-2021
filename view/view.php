@@ -40,7 +40,21 @@ class view{
         $this->smarty->display('templates/verDetalleComponentes.tpl');
     }
 
+    function verGabineteAEditar($data){
+        $this->smarty->assign('edit',$data);
+        $this->smarty->display('templates/editarGabinete.tpl');
+    }
 
+    function mostrarComponenteAeditar($dato,$datoGabinete){
+        $this->smarty->assign('dcomponente',$dato);
+        $this->smarty->assign('marcas',$datoGabinete);
+        $this->smarty->display('templates/editarComponente.tpl');
+    }
+
+    function mostrarError($mensaje = "" ){
+        $this->smarty->assign("mensajeError",$mensaje);
+        $this->smarty->display('templates/errorIngresos.tpl');
+    }
 
     function locationComponentes(){
         header("Location: ".BASE_URL."componentes");

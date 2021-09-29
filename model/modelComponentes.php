@@ -38,6 +38,17 @@ class modelComponentes{
         $query->execute(array($id));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
+    }
 
+    function obtenerDatosDelComponente($id){
+        $query = $this->db->prepare('SELECT * FROM componentes WHERE id_componentes=?');
+        $query->execute(array($id));
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    function editarElComponente($editMicro,$editMother,$editRam,$editGamer,$editDescripcion,$editId){
+        $query = $this->db->prepare('UPDATE componentes SET microprocesador=?,motherboard=?,ram=?,descripcion=?,fk_gabinetes=? WHERE id_componentes=?');
+        $query->execute(array($editMicro,$editMother,$editRam,$editDescripcion,$editGamer,$editId));
     }
 }

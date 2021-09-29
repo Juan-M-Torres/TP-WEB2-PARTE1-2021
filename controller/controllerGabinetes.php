@@ -61,4 +61,30 @@ class controllerGabinetes{
          $this->view->showComponentesAsociados($data,$cantidad);
         }
 
+      function editarGabinete($params = null){
+
+         $id = $params[':ID'];
+         $data = $this->modelGabinetes->seleccionarGabinete($id);
+         $this->view->verGabineteAEditar($data);
+      }
+      
+      function editGabinete(){
+         if(isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer'])) {
+            if(!empty($_POST['id']) && !empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer'])){
+                $nombreEdit = $_POST['nombre'];
+                $marcaEdit = $_POST['marca'];
+                $gamerEdit = $_POST['gamer'];
+                $idEdit = $_POST['id'];
+                if($gamerEdit == "si"){
+                  $gamerEdit = 1;
+                }else{
+                   $gamerEdit = 0;
+                }
+                $this->modelGabinetes->editarElgabinete($marcaEdit,$nombreEdit,$gamerEdit,$idEdit);
+                $this->view->locationGabinetes(); 
+            }else{
+                $this->view->mostrarError("Faltan caracteres");       
+            }
+         }
+      }
 }

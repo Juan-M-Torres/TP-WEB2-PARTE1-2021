@@ -1,19 +1,20 @@
 
-
 {include file="header.tpl"}
 
-
-
-<form action="editarGabinete" method="POST">
-<input type="text" name="nombre" placeholder="Marca del Gabinete" required>
-<input type="text" name ="marca" placeholder="Nombre del gabinete" required>
-<select name="gamer">
-<option value="si">Si</option>
-<option value="no">No</option>
-</select>
-<input type="submit" value="Editar">
+{foreach from=$edit item=dato }
+    <form action="editGabinete" method="POST">
+        <input type="hidden" name="id" value="{$dato->id_gabinetes}">
+        <input type="text" name="nombre" value="{$dato->marca}" required>
+        <input type="text" name ="marca" value="{$dato->nombre}" required>
+        <select name="gamer">
+            <option value="si">Si</option>
+            <option value="no">No</option>
+        </select>
+        <input type="submit" value="Editar">
 </form>  
+{/foreach}
 
+<a href="gabinetes">Volver atras</a>
 
 {include file="footer.tpl"}
 

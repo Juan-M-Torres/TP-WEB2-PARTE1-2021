@@ -27,7 +27,11 @@
     $r->addRoute("verMas/:ID", "GET", "controllerComponentes", "verMas");
 
     //Editar
-    
+                //action o url       //metodo get o post //a que controller va     // nombre de la funcion que tiene que ir
+    $r->addRoute("editarComponente/:ID", "GET", "controllerComponentes", "editarComponente");
+    $r->addRoute("editComponente", "POST", "controllerComponentes", "editComponente");
+    $r->addRoute("editarGabinete/:ID", "GET", "controllerGabinetes", "editarGabinete");
+    $r->addRoute("editGabinete", "POST", "controllerGabinetes", "editGabinete");
 
     //Ruta por defecto.
     $r->setDefaultRoute("controllerComponentes", "home");
