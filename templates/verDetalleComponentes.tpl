@@ -18,7 +18,7 @@
             <tr>
                 <td>{$dato->microprocesador}</td>
                 <td>{$dato->motherboard}</td>
-                <td>{$dato->ram}</td>
+                <td>{$dato->ram} Gb</td>
                 <td>{$dato->descripcion}</td>
                 <td>{$dato->marca}</td>
                 <td>{$dato->nombre}</td>

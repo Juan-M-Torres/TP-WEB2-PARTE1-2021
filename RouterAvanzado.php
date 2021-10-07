@@ -17,10 +17,10 @@
     $r->addRoute("login", "GET", "controllerLogin", "login");
     $r->addRoute("verify", "POST", "controllerLogin", "verifyLogin");
     $r->addRoute("logout", "GET", "controllerLogin", "logout");
-    $r->addRoute("registrar", "GET", "controllerLogin", "registrar");
-    $r->addRoute("registrarUsuario", "POST", "controllerLogin", "registrarUsuario");
+    //$r->addRoute("registrar", "GET", "controllerLogin", "registrar");
+    //$r->addRoute("registrarUsuario", "POST", "controllerLogin", "registrarUsuario");
 
-    //Elimar
+    //Eliminar
     $r->addRoute("borrarKit/:ID", "GET", "controllerKit", "borrarKit");
     $r->addRoute("borrarGabinete/:ID", "GET", "controllerGabinetes", "borrarGabinete");
 

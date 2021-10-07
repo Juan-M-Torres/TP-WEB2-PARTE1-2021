@@ -14,19 +14,14 @@ class view{
         }                 
     }
 
-
-
-    function ShowHome(){
-        
+    function ShowHome(){        
         $this->smarty->display('templates/home.tpl');
     }
 
     function showComponentes($data,$datoGabinete){
-
         $this->smarty->assign('dcomponentes',$data);
         $this->smarty->assign('dgabinete',$datoGabinete);
-        $this->smarty->display('templates/componentes.tpl');
-       
+        $this->smarty->display('templates/componentes.tpl');       
     }
 
     function showGabinetes($data){

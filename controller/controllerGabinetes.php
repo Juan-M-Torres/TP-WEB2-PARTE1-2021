@@ -1,5 +1,5 @@
 <?php
-   require_once "./view/viewGabinetes.php";
+   require_once "./view/view.php";
    require_once "./model/modelGabinete.php";
    require_once "./model/modelKit.php";
 
@@ -11,7 +11,7 @@ class controllerGabinetes{
    private $modelKit;
 
    function __construct() {
-       $this->view = new viewGabinetes();
+       $this->view = new view();
        $this->modelGabinete = new modelGabinete();
        $this->modelKit = new modelKit();
    }

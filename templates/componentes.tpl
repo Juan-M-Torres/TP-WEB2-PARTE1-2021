@@ -7,8 +7,10 @@
                 <th scope="col">Motherboard</th>
                 <th scope="col">Ram</th>
                 <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
+                {if isset($nombre)}
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                {/if}
             </tr>
         </thead>
         <tbody>
@@ -18,12 +20,15 @@
                 <td>{$dato->motherboard}</td>
                 <td>{$dato->ram} Gb</td>
                 <td><a href="verMas/{$dato->id_kit}"><input class="btn btn-info" type="button" value="Ver descripcion"></a></td>
+                {if isset($nombre)}
                 <td><a href="borrarKit/{$dato->id_kit}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
                 <td><a href="editarKit/{$dato->id_kit}"><input class="btn btn-success" type="button" value="Editar"></a></td>
+                {/if}
             </tr>
         {/foreach}
         </tbody>
     </table>
+     {if isset($nombre)}
     <div class="col-4">
         <form action="agregarKit" method="POST">
             <div class="mb-3">
@@ -52,6 +57,7 @@
         </form>
         <br>
     </div>
+    {/if}
 </div>
 
 {include file="footer.tpl"}

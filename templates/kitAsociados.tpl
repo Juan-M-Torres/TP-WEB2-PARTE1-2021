@@ -7,7 +7,9 @@
                 <th scope="col">Microprocesador</th>
                 <th scope="col">Motherboard</th>
                 <th scope="col">Ram</th>
+                 {if isset($nombre)}
                 <th scope="col"></th>
+                 {/if}
             </tr>
         </thead>
         <tbody>
@@ -16,7 +18,9 @@
                 <td>{$dato->microprocesador}</td>
                 <td>{$dato->motherboard}</td>
                 <td>{$dato->ram}</td>
+                 {if isset($nombre)}
                 <td><a href="borrarKit/{$dato->id_kit}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
+                {/if}
             </tr>
         {/foreach}
         </tbody>

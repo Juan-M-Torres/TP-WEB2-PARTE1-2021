@@ -16,13 +16,7 @@
         $this->modelGabinete=new modelGabinete();
     }
 
-     function home(){
-
-       $this->view->ShowHome();
-     }
-
      function kit(){
-
       $data = $this->modelKit->getKit();
       $datoGabinete = $this->modelGabinete->getGabinetes();
       $this->view->showComponentes($data,$datoGabinete);

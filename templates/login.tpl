@@ -11,7 +11,7 @@
                 </div>
                 <input class="btn btn-primary" type="submit" value="Login">
             </form>
-            <a href="registrar">Aun no te registraste?</a>
+            <!--<a href="registrar">Aun no te registraste?</a>-->
             <br>
         </div>
         <h4 class="alert-danger">{$error}</h4>

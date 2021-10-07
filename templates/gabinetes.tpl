@@ -3,8 +3,10 @@
     <table class="table">
         <thead>
             <tr>
+             {if isset($nombre)}
                 <th scope="col"></th>
                 <th scope="col"></th>
+                {/if}
                 <th scope="col"></th>
                 <th scope="col">Marca</th>
                 <th scope="col">Nombre</th>
@@ -14,8 +16,10 @@
         <tbody>
         {foreach from=$dgabinetes item=dato}
             <tr>
+             {if isset($nombre)}
                 <td><a href="borrarGabinete/{$dato->id_gabinete}"><input class="btn btn-danger" type="button" value="borrar"></a></td>
                 <td><a href="editarGabinete/{$dato->id_gabinete}"><input class="btn btn-success" type="button" value="editar"></a></td>
+            {/if}
                 <td><a href="verKitsAsociados/{$dato->id_gabinete}"><input class="btn btn-info" type="button" value="ver componentes asociados"></a></td>
                 <td>{$dato->marca}</td>
                 <td>{$dato->nombre}</td>
@@ -30,7 +34,7 @@
         </tbody>
     </table>
 
-
+     {if isset($nombre)}
     <h4>Agregar un gabinete</h4>
     <div class="col-4">
         <form action="agregarGabinete" method="POST">
@@ -51,7 +55,7 @@
             <br>
        
     </div>
- 
+    {/if}
 </div>
 
 {include file="footer.tpl"}

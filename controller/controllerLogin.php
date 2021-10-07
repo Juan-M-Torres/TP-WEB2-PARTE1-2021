@@ -19,6 +19,7 @@ class controllerLogin{
         session_start();
         session_destroy();
         $this->view->showLogin("Te deslogueaste");
+        $this->view->showHome();
     }
 
     function verifyLogin(){
