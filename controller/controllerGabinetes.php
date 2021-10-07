@@ -1,41 +1,40 @@
 <?php
-   require_once "./view/view.php";
-   require_once "./model/modelGabinetes.php";
-   require_once "./model/modelComponentes.php";
+   require_once "./view/viewGabinetes.php";
+   require_once "./model/modelGabinete.php";
+   require_once "./model/modelKit.php";
 
 
 class controllerGabinetes{
 
    private $view;
-   private $modelGabinetes;
-   private $modelComponentes;
+   private $modelGabinete;
+   private $modelKit;
 
    function __construct() {
-       $this->view=new view();
-       $this->modelGabinetes=new modelGabinetes();
-       $this->modelComponentes=new modelComponentes();
+       $this->view = new viewGabinetes();
+       $this->modelGabinete = new modelGabinete();
+       $this->modelKit = new modelKit();
    }
-
+   
     function home(){
-
       $this->view->ShowHome();
     }
    
+
    function gabinetes(){
-      
-       $data = $this->modelGabinetes->getGabinetes();
+      $data = $this->modelGabinete->getGabinetes();
        $this->view->showGabinetes($data);
       }
+   
  
-   function borrarGabinetes($params = null){
- 
+   function borrarGabinete($params = null){
          $id = $params[':ID'];
-         $this->modelGabinetes->deleteGabinetes($id);
+         $this->modelGabinete->deleteGabinete($id);
          $this->view->locationGabinetes();
  
    } 
 
-      function agregarGabinetes(){
+      function agregarGabinete(){
          if(isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer'])) {
             if(!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer'])){
                 $nombreAgre = $_POST['nombre'];
@@ -46,7 +45,7 @@ class controllerGabinetes{
                 }else{
                    $gamerAgre = 0;
                 }
-                $this->modelGabinetes->agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre);
+                $this->modelGabinete->agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre);
                 $this->view->locationGabinetes();     
             }else{
                 var_dump("Faltan datos obligatorios");        
@@ -54,17 +53,16 @@ class controllerGabinetes{
          }
       }
 
-      function verComponentesAsociados($params = null){
+      function verKitsAsociados($params = null){
          $id = $params[':ID'];
-         $data = $this->modelComponentes->VerComponentesAsociadosAgabinete($id);
+         $data = $this->modelKit->VerKitAsociadosAgabinete($id);
          $cantidad = count($data);
-         $this->view->showComponentesAsociados($data,$cantidad);
-        }
+         $this->view->showKitAsociados($data,$cantidad);
+      }
 
       function editarGabinete($params = null){
-
          $id = $params[':ID'];
-         $data = $this->modelGabinetes->seleccionarGabinete($id);
+         $data = $this->modelGabinete->seleccionarGabinete($id);
          $this->view->verGabineteAEditar($data);
       }
       
@@ -80,7 +78,7 @@ class controllerGabinetes{
                 }else{
                    $gamerEdit = 0;
                 }
-                $this->modelGabinetes->editarElgabinete($marcaEdit,$nombreEdit,$gamerEdit,$idEdit);
+                $this->modelGabinete->editarElgabinete($marcaEdit,$nombreEdit,$gamerEdit,$idEdit);
                 $this->view->locationGabinetes(); 
             }else{
                 $this->view->mostrarError("Faltan caracteres");       

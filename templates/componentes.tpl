@@ -1,44 +1,57 @@
 {include file="header.tpl"}
-
-<table>
-    <thead>
-        <tr>
-            <td>microprocesador</td>
-            <td>motherboard</td>
-            <td>ram</td>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    {foreach from=$dcomponentes item=dato}
-        <tr>
-            <td>{$dato->microprocesador}</td>
-            <td>{$dato->motherboard}</td>
-            <td>{$dato->ram}</td>
-            <td><a href="verMas/{$dato->id_componentes}"><input type="button" value="ver descripcion"></a></td>
-            <td><a href="borrarComponentes/{$dato->id_componentes}"><input type="button" value="borrar"></a></td>
-            <td><a href="editarComponente/{$dato->id_componentes}"><input type="button" value="editar"></a></td>
-        </tr>
-    {/foreach}
-    </tbody>
-</table>
-
-<form action="agregarComponentes" method="POST">
-    <input type="text"  name="micro" placeholder="Ingrese Micro">
-    <input type="text" name="mother" placeholder="Ingrese Mother">
-    <input type="text" name="ram" placeholder="Ingrese Ram">
-    <textarea name="descripcion" cols="30" rows="10" placeholder="Agrege descripcion"></textarea>
-    <select name="gamer" id="">
-    {foreach from=$dgabinete item=dato}
-        <option value="{$dato->id_gabinetes}">{$dato->marca},{if $dato->gamer == 1}
-            "Gamer"
-            {else}
-                "No Gamer"            
-        {/if}</option>
-    {/foreach}
-    </select>
-    <input type="submit" value="agregar">
-</form>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Microprocesador</th>
+                <th scope="col">Motherboard</th>
+                <th scope="col">Ram</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {foreach from=$dcomponentes item=dato}
+            <tr>
+                <td>{$dato->microprocesador}</td>
+                <td>{$dato->motherboard}</td>
+                <td>{$dato->ram} Gb</td>
+                <td><a href="verMas/{$dato->id_kit}"><input class="btn btn-info" type="button" value="Ver descripcion"></a></td>
+                <td><a href="borrarKit/{$dato->id_kit}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
+                <td><a href="editarKit/{$dato->id_kit}"><input class="btn btn-success" type="button" value="Editar"></a></td>
+            </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    <div class="col-4">
+        <form action="agregarKit" method="POST">
+            <div class="mb-3">
+                <input class="form-control" type="text"  name="micro" placeholder="Ingrese Micro">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" name="mother" placeholder="Ingrese Mother">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="text" name="ram" placeholder="Ingrese Ram">
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"  placeholder="Agrege descripcion"></textarea>
+            </div>
+            <select id="disabledSelect" class="form-select" name="gamer">
+            {foreach from=$dgabinete item=dato}
+                <option value="{$dato->id_gabinete}">{$dato->marca},{if $dato->gamer == 1}
+                    "Gamer"
+                    {else}
+                        "No Gamer"            
+                {/if}</option>
+            {/foreach}
+            </select>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Agregar">
+        </form>
+        <br>
+    </div>
+</div>
 
 {include file="footer.tpl"}

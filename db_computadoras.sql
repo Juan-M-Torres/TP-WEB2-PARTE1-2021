@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2021 a las 20:35:47
+-- Tiempo de generación: 06-10-2021 a las 23:21:13
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -24,44 +24,40 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `componentes`
+-- Estructura de tabla para la tabla `gabinete`
 --
 
-CREATE TABLE `componentes` (
-  `id_componentes` int(11) NOT NULL,
-  `microprocesador` varchar(266) NOT NULL,
-  `motherboard` varchar(266) NOT NULL,
-  `ram` int(11) NOT NULL,
-  `fk_gabinetes` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `gabinetes`
---
-
-CREATE TABLE `gabinetes` (
-  `id_gabinetes` int(11) NOT NULL,
+CREATE TABLE `gabinete` (
+  `id_gabinete` int(11) NOT NULL,
   `nombre` varchar(266) NOT NULL,
   `marca` varchar(266) NOT NULL,
   `gamer` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `gabinetes`
+-- Volcado de datos para la tabla `gabinete`
 --
 
-INSERT INTO `gabinetes` (`id_gabinetes`, `nombre`, `marca`, `gamer`) VALUES
-(1, 'ProArt Station', 'Asus', 0),
-(2, 'ProArt Station', 'Asus', 1),
-(3, 'One a145s', 'Corsair', 1),
-(4, 'F1040ns', 'Hp', 0),
+INSERT INTO `gabinete` (`id_gabinete`, `nombre`, `marca`, `gamer`) VALUES
 (5, 'MEG Aegis', 'Msi', 0),
 (6, 'MAGMETA', 'Msi', 1),
 (7, 'Legion', 'Lenovo', 0),
-(8, 'Crystal Series 570X', 'Corsair', 1),
-(9, 'Carbide Series', 'Corsair', 0);
+(8, 'Crystal Series 570X', 'Corsair', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `kit`
+--
+
+CREATE TABLE `kit` (
+  `id_kit` int(11) NOT NULL,
+  `microprocesador` varchar(266) NOT NULL,
+  `motherboard` varchar(266) NOT NULL,
+  `ram` int(11) NOT NULL,
+  `descripcion` text NOT NULL,
+  `id_gabinete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -71,26 +67,35 @@ INSERT INTO `gabinetes` (`id_gabinetes`, `nombre`, `marca`, `gamer`) VALUES
 
 CREATE TABLE `user` (
   `id_usuario` int(11) NOT NULL,
-  `nombre` varchar(266) NOT NULL,
+  `email` varchar(266) NOT NULL,
   `password` varchar(266) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id_usuario`, `email`, `password`) VALUES
+(1, 'do@gmail.com', '$2y$10$IS6hI4MCWjg5OSaYDEwSBuB3Sjjbe8TVXwUxNw6POYwh5iF8JYT/S'),
+(2, 'pepe@gmail.com', '$2y$10$n4P5gqzdsUonJWEdGX1SqOkuj0xzrvYDdeAc9G0YcFo93A0pAMoDa'),
+(3, 'juancarlos@hotmail.com', '$2y$10$lYJBh/pMSqxwgOycJ.vh2OIINO6GpnS.gXH2ymFDGvctyPuDdAlfK');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `componentes`
+-- Indices de la tabla `gabinete`
 --
-ALTER TABLE `componentes`
-  ADD PRIMARY KEY (`id_componentes`),
-  ADD KEY `fk_gabinetes` (`fk_gabinetes`);
+ALTER TABLE `gabinete`
+  ADD PRIMARY KEY (`id_gabinete`);
 
 --
--- Indices de la tabla `gabinetes`
+-- Indices de la tabla `kit`
 --
-ALTER TABLE `gabinetes`
-  ADD PRIMARY KEY (`id_gabinetes`);
+ALTER TABLE `kit`
+  ADD PRIMARY KEY (`id_kit`),
+  ADD KEY `fk_gabinetes` (`id_gabinete`);
 
 --
 -- Indices de la tabla `user`
@@ -103,32 +108,32 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT de la tabla `componentes`
+-- AUTO_INCREMENT de la tabla `gabinete`
 --
-ALTER TABLE `componentes`
-  MODIFY `id_componentes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `gabinete`
+  MODIFY `id_gabinete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT de la tabla `gabinetes`
+-- AUTO_INCREMENT de la tabla `kit`
 --
-ALTER TABLE `gabinetes`
-  MODIFY `id_gabinetes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `kit`
+  MODIFY `id_kit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `componentes`
+-- Filtros para la tabla `kit`
 --
-ALTER TABLE `componentes`
-  ADD CONSTRAINT `componentes_ibfk_1` FOREIGN KEY (`fk_gabinetes`) REFERENCES `gabinetes` (`id_gabinetes`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `kit`
+  ADD CONSTRAINT `kit_ibfk_1` FOREIGN KEY (`id_gabinete`) REFERENCES `gabinete` (`id_gabinete`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

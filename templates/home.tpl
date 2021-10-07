@@ -1,10 +1,12 @@
 {include file="header.tpl"}
+<div class="container">
+    <main>
 
-<main>
-
-<img class="logoprincipal" src="img/logoprincipal.jpg" alt="">
+    <img class="img-fluid" src="img/logoprincipal.jpg" alt="">
 
 
-</main>
+    </main>
+</div>
+
 
 {include file="footer.tpl"}
