@@ -63,4 +63,8 @@ class view{
     function locationGabinetes(){
         header("Location: ".BASE_URL."gabinetes");
     }
+    
+    function showLoginLocation(){
+        header("Location: ".BASE_URL."login");
+    }
 }

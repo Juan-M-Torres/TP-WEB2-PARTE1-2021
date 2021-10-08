@@ -16,6 +16,16 @@
         $this->modelGabinete=new modelGabinete();
     }
 
+    private function checkLoggedIn(){
+      if(session_status() !== PHP_SESSION_ACTIVE){
+          session_start();
+      }
+      if(!isset($_SESSION["email"])){
+          $this->view->showLoginLocation();
+          die();
+      }
+   }
+
      function kit(){
       $data = $this->modelKit->getKit();
       $datoGabinete = $this->modelGabinete->getGabinetes();
@@ -23,13 +33,14 @@
      }
 
      function borrarKit($params = null){
+        $this->checkLoggedIn();
          $id = $params[':ID'];
          $this->modelKit->deleteKit($id);
          $this->view->locationKit();
      }
 
      function agregarKit(){
-      
+      $this->checkLoggedIn();
       if(isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion'])) {
          if(!empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer']) && !empty($_POST['descripcion'])){
             if(is_numeric($_POST['ram'])){
@@ -42,7 +53,7 @@
             $this->modelKit->addKit($dMicro,$dMother,$dRam,$dGamer,$dDescripcion);
             $this->view->locationKit();
          }else{
-            $this->view->mostrarError("Ingreso un  caracteres");
+            $this->view->mostrarError("Ingreso un  caracteres en Ram");
          }
          }else{
             $this->view->mostrarError("Faltan caracteres");
@@ -57,6 +68,7 @@
      }
 
      function editarKit($params = null){
+      $this->checkLoggedIn();
         $id = $params[':ID'];
         $data = $this->modelKit->obtenerDatosDelKit($id);
         $datoGabinete = $this->modelGabinete->getGabinetes();
@@ -64,6 +76,7 @@
      }
 
      function editKit(){
+      $this->checkLoggedIn();
       if(isset($_POST['id']) && isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion'])) {
          if(!empty($_POST['id']) && !empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer']) && !empty($_POST['descripcion'])){
             if(is_numeric($_POST['ram'])){

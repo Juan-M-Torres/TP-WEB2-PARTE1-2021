@@ -29,7 +29,10 @@
         </nav>
 
         {if isset($nombre)}
-            <button><a href="logout">cerrar seccion</a></button>
+        <div style="display: flex;">
+            <h6 style="color: green; padding-top: 5px; padding-right: 4px">Hola: {$nombre}</h6>
+            <a href="logout"><button type="button" class="btn btn-danger btn-sm">Log Out</button></a>
+        </div>
         {/if}
     </div>
 

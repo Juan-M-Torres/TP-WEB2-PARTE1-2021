@@ -11,7 +11,18 @@ class controllerLogin{
         $this->view = new viewLogin();
     }
 
+    private function checkLoggedIn(){
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        if(isset($_SESSION["email"])){
+            $this->view->showHome();
+            die();
+        }
+     }
+
     function login(){
+        $this->checkLoggedIn();
         $this->view->showLogin();
     }
 
@@ -33,7 +44,6 @@ class controllerLogin{
 
                 session_start();
                 $_SESSION['email'] = $email;
-
                 $this->view->showHome();
             }else{
                 $this->view->showLogin("Acceso denegado");

@@ -15,6 +15,16 @@ class controllerGabinetes{
        $this->modelGabinete = new modelGabinete();
        $this->modelKit = new modelKit();
    }
+
+   private function checkLoggedIn(){
+      if(session_status() !== PHP_SESSION_ACTIVE){
+          session_start();
+      }
+      if(!isset($_SESSION["email"])){
+          $this->view->showLoginLocation();
+          die();
+      }
+   }
    
     function home(){
       $this->view->ShowHome();
@@ -28,13 +38,14 @@ class controllerGabinetes{
    
  
    function borrarGabinete($params = null){
+         $this->checkLoggedIn();
          $id = $params[':ID'];
          $this->modelGabinete->deleteGabinete($id);
-         $this->view->locationGabinetes();
- 
+         $this->view->locationGabinetes(); 
    } 
 
       function agregarGabinete(){
+         $this->checkLoggedIn();
          if(isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer'])) {
             if(!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer'])){
                 $nombreAgre = $_POST['nombre'];
@@ -61,12 +72,14 @@ class controllerGabinetes{
       }
 
       function editarGabinete($params = null){
+         $this->checkLoggedIn();
          $id = $params[':ID'];
          $data = $this->modelGabinete->seleccionarGabinete($id);
          $this->view->verGabineteAEditar($data);
       }
       
       function editGabinete(){
+         $this->checkLoggedIn();
          if(isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer'])) {
             if(!empty($_POST['id']) && !empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer'])){
                 $nombreEdit = $_POST['nombre'];

@@ -1,61 +1,70 @@
 {include file="header.tpl"}
 <div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-             {if isset($nombre)}
-                <th scope="col"></th>
-                <th scope="col"></th>
-                {/if}
-                <th scope="col"></th>
-                <th scope="col">Marca</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Gamer</th>
-            </tr>
-        </thead>
-        <tbody>
-        {foreach from=$dgabinetes item=dato}
-            <tr>
-             {if isset($nombre)}
-                <td><a href="borrarGabinete/{$dato->id_gabinete}"><input class="btn btn-danger" type="button" value="borrar"></a></td>
-                <td><a href="editarGabinete/{$dato->id_gabinete}"><input class="btn btn-success" type="button" value="editar"></a></td>
-            {/if}
-                <td><a href="verKitsAsociados/{$dato->id_gabinete}"><input class="btn btn-info" type="button" value="ver componentes asociados"></a></td>
-                <td>{$dato->marca}</td>
-                <td>{$dato->nombre}</td>
-                {if $dato->gamer == TRUE }
-                    <td>Si</td>
-                    {else}
-                    <td>No</td>
-                {/if}
-                
-            </tr>
-        {/foreach}
-        </tbody>
-    </table>
-
-     {if isset($nombre)}
-    <h4>Agregar un gabinete</h4>
-    <div class="col-4">
-        <form action="agregarGabinete" method="POST">
-            <div class="mb-3">
-                <input class="form-control" type="text" name="marca" placeholder="Marca del Gabinete" required>
-            </div>
-            <div class="mb-3">
-                <input class="form-control" type="text" name ="nombre" placeholder="Nombre del gabinete" required>
-            </div>
-            <p>Es gamer?</p>
-            <select id="disabledSelect" class="form-select" name="gamer">
-                <option value="si">Si</option>
-                <option value="no">No</option>
-            </select>
-            <br>
-            <input  class="btn btn-primary" type="submit" value="Cargar">
-        </form>
-            <br>
-       
+    <div class="outer">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Gamer</th>
+                    <th scope="col"></th>
+                    {if isset($nombre)}
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    {/if}
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$dgabinetes item=dato}
+                    <tr>
+                        <td>{$dato->marca}</td>
+                        <td>{$dato->nombre}</td>
+                        {if $dato->gamer == TRUE }
+                            <td>Si</td>
+                        {else}
+                            <td>No</td>
+                        {/if}
+                        <td><a href="verKitsAsociados/{$dato->id_gabinete}"><input class="btn btn-info" type="button" value="ver Kit Asociados"></a></td>
+                        {if isset($nombre)}
+                            <td><a href="borrarGabinete/{$dato->id_gabinete}"><input class="btn btn-danger" type="button" value="borrar"></a></td>
+                            <td><a href="editarGabinete/{$dato->id_gabinete}"><input class="btn btn-success" type="button" value="editar"></a></td>
+                        {/if}                        
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
     </div>
-    {/if}
+    
+     {if isset($nombre)}
+     <div class="bajar">
+        <h4>Agregar un gabinete</h4>
+        <div class="col-12">
+            <form action="agregarGabinete" class="voltear" method="POST">
+                <div class="col-3">
+                    <input class="form-control" type="text" name="marca" placeholder="Marca del Gabinete" required>
+                </div>
+                <div class="col-3 separar">
+                    <input class="form-control" type="text" name ="nombre" placeholder="Nombre del gabinete" required>
+                </div>
+                <div class="col-3 select" >
+                    <div class="centrar">
+                        <label>Es Gamer?</label>
+                    </div>
+                    <div class="separar">
+                        <select id="disabledSelect" class="form-select" name="gamer">
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <input  class="btn btn-primary" type="submit" value="Cargar">
+            </form>
+                <br>
+        
+        </div>
+        {/if}
+    </div>
 </div>
 
 {include file="footer.tpl"}
