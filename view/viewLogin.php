@@ -27,7 +27,5 @@ class viewLogin{
         header("Location: ".BASE_URL."home");
     }
 
-    function viewRegistrar(){
-        $this->smarty->display('templates/registro.tpl');
-    }
+    
 }

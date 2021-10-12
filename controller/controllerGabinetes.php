@@ -26,23 +26,23 @@ class controllerGabinetes{
       }
    }
    
-    function home(){
+   function home(){
       $this->view->ShowHome();
-    }
+   }
    
 
-   function gabinetes(){
+    function gabinetes(){
       $data = $this->modelGabinete->getGabinetes();
        $this->view->showGabinetes($data);
-      }
+   }
    
  
-   function borrarGabinete($params = null){
+      function borrarGabinete($params = null){
          $this->checkLoggedIn();
          $id = $params[':ID'];
          $this->modelGabinete->deleteGabinete($id);
          $this->view->locationGabinetes(); 
-   } 
+      } 
 
       function agregarGabinete(){
          $this->checkLoggedIn();

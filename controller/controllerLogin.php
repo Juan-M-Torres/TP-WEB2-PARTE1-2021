@@ -51,9 +51,7 @@ class controllerLogin{
         }
     }
 
-    function registrar(){
-        $this->view->viewRegistrar();
-    }
+    
 
     /*function registrarUsuario(){
         if(!empty($_POST['email'])&& !empty($_POST['password'])){
