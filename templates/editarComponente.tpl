@@ -29,7 +29,7 @@
                 {/foreach}
                 </select>
                 <br>
-                <input class="btn btn-success " type="submit" value="editar">
+                <input class="btn btn-success " type="submit" value="Editar">
             </form>  
         {/foreach}
     </div>

@@ -41,8 +41,8 @@
 
      function agregarKit(){
       $this->checkLoggedIn();
-      if(isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion'])) {
-         if(!empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer']) && !empty($_POST['descripcion'])){
+      if(isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion']) ) {
+         if(!empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer'])){
             if(is_numeric($_POST['ram'])){
             $dMicro = $_POST['micro'];
             $dMother = $_POST['mother'];
@@ -78,7 +78,7 @@
      function editKit(){
       $this->checkLoggedIn();
       if(isset($_POST['id']) && isset($_POST['micro']) && isset($_POST['mother']) && isset($_POST['ram']) && isset($_POST['gamer']) && isset($_POST['descripcion'])) {
-         if(!empty($_POST['id']) && !empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram']) && !empty($_POST['gamer']) && !empty($_POST['descripcion'])){
+         if(!empty($_POST['id']) && !empty($_POST['micro']) && !empty($_POST['mother']) && !empty($_POST['ram'])){
             if(is_numeric($_POST['ram'])){
                $editMicro = $_POST['micro'];
                $editMother = $_POST['mother'];
