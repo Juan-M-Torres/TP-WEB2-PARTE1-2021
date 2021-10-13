@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2021 a las 23:21:13
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.6
+-- Tiempo de generación: 13-10-2021 a las 19:31:06
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 8.0.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,10 +39,14 @@ CREATE TABLE `gabinete` (
 --
 
 INSERT INTO `gabinete` (`id_gabinete`, `nombre`, `marca`, `gamer`) VALUES
-(5, 'MEG Aegis', 'Msi', 0),
 (6, 'MAGMETA', 'Msi', 1),
-(7, 'Legion', 'Lenovo', 0),
-(8, 'Crystal Series 570X', 'Corsair', 1);
+(7, 'Luminus 110F', 'AZZA', 0),
+(13, 'Bolt usb 3', 'AeroCool', 1),
+(16, 'Carbide 100R', 'Corsair', 1),
+(17, 'MasterBox', 'Cooler Master', 0),
+(18, 'Crystal Series', 'Corsair', 0),
+(19, 'HT700', 'Msi', 0),
+(20, 'BakeOff 450', 'AZZA', 1);
 
 -- --------------------------------------------------------
 
@@ -55,9 +59,22 @@ CREATE TABLE `kit` (
   `microprocesador` varchar(266) NOT NULL,
   `motherboard` varchar(266) NOT NULL,
   `ram` int(11) NOT NULL,
-  `descripcion` text NOT NULL,
+  `descripcion` text DEFAULT NULL,
   `id_gabinete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `kit`
+--
+
+INSERT INTO `kit` (`id_kit`, `microprocesador`, `motherboard`, `ram`, `descripcion`, `id_gabinete`) VALUES
+(9, 'Intel Core I7', 'AsRock', 64, 'Pc dedicada exclusivamente a el mundo gamer ', 6),
+(10, 'Intel Core I5', 'ASUS', 8, 'Pc con microprocesador de ultima generación, perfecto para jugar juegos básicos y ofimática ', 7),
+(11, 'Intel Core I3', 'Lenovo', 4, 'Pc exclusivamente para uso de ofimática ', 17),
+(12, 'Ryzen 7 2700X', 'MSI', 16, 'Pc con microprocesador de ultima generación exclusivo para edición de video y fotos', 16),
+(13, 'Ryzen 5 2600', 'AsRock', 8, 'Pc de alta eficacia para usar en oficinas', 20),
+(14, 'Ryzen Threadripper', 'Asus', 64, '', 19),
+(18, 'Intel Core I3', 'Lenovo', 16, '', 17);
 
 -- --------------------------------------------------------
 
@@ -111,13 +128,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `gabinete`
 --
 ALTER TABLE `gabinete`
-  MODIFY `id_gabinete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_gabinete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `kit`
 --
 ALTER TABLE `kit`
-  MODIFY `id_kit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
