@@ -12,7 +12,7 @@
 <body>
 <body>
     <header>
-            <h1>PC Componentes</h1>
+            <h1 class= "headerTitulo">PC Componentes</h1>
         
     </header>
     <div class="d-flex justify-content-between navbar navbar-expand-lg navbar navbar-dark bg-dark">
@@ -29,8 +29,8 @@
         </nav>
 
         {if isset($nombre)}
-        <div style="display: flex;">
-            <h6 style="color: green; padding-top: 5px; padding-right: 4px">Hola: {$nombre}</h6>
+        <div class= "nombreLogin">
+            <h6 class= "loginIngresado"> Hola: {$nombre}</h6>
             <a href="logout"><button type="button" class="btn btn-danger btn-sm">Log Out</button></a>
         </div>
         {/if}

@@ -1,3 +1,6 @@
+.headerTitulo{
+    text-align: center;
+}
 .imgpiepagina {
     height: 25px;
     width: 25px;
@@ -42,4 +45,12 @@
 
 .bajar {
     margin-top: 20px;
+}
+.nombreLogin{
+    display: flex;
+}
+.loginIngresado{
+    color: green; 
+    padding-top: 5px; 
+    padding-right: 4px;
 }

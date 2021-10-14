@@ -28,12 +28,12 @@
                     {/if}</option>
                 {/foreach}
                 </select>
-                <br>
+                
                 <input class="btn btn-success " type="submit" value="Editar">
             </form>  
         {/foreach}
     </div>
-    <br>
+    
     <a class="btn btn-warning" href="kit">Volver atras</a>
 </div>
 {include file="footer.tpl"}
