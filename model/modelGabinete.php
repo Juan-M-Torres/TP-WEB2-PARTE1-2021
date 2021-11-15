@@ -20,9 +20,9 @@ class modelGabinete{
         $query->execute(array($id));  
     }
 
-    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre){
-        $query=$this->db->prepare('INSERT INTO gabinete (marca,nombre,gamer) VALUE (?,?,?)');
-        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre));
+    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img){
+        $query=$this->db->prepare('INSERT INTO gabinete (nombre,marca,gamer,imagen) VALUE (?,?,?,?)');
+        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre, $img));
     }
 
     function seleccionarGabinete($id){

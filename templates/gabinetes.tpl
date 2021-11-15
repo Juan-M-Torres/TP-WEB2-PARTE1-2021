@@ -8,6 +8,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Gamer</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     {if isset($nombre)}
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -25,6 +26,7 @@
                             <td>No</td>
                         {/if}
                         <td><a href="verKitsAsociados/{$dato->id_gabinete}"><input class="btn btn-info" type="button" value="ver Kit Asociados"></a></td>
+                        <td><img src="data:image/jpg;base64,{$dato->imagen}" width="160px"></td>
                         {if isset($nombre)}
                             <td><a href="borrarGabinete/{$dato->id_gabinete}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
                             <td><a href="editarGabinete/{$dato->id_gabinete}"><input class="btn btn-success" type="button" value="Editar"></a></td>
@@ -39,7 +41,7 @@
      <div class="bajar">
         <h4>Agregar un gabinete</h4>
         <div class="col-12">
-            <form action="agregarGabinete" class="voltear" method="POST">
+            <form action="agregarGabinete" class="voltear" method="POST" enctype="multipart/form-data">
                 <div class="col-3">
                     <input class="form-control" type="text" name="marca" placeholder="Marca del Gabinete" required>
                 </div>
@@ -57,6 +59,7 @@
                         </select>
                     </div>
                 </div>
+                <input class="form-control" type="file" name="imagen" accept=".jpg, .png" required>
                 <br>
                 <input  class="btn btn-primary" type="submit" value="Cargar">
             </form>

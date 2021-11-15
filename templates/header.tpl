@@ -25,6 +25,9 @@
                 {if !isset($nombre)}
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="login">Login</a></li>
                 {/if}
+                {if isset($admin)}
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="usuarios">Administracion</a></li>
+                {/if}
             </ul>
         </nav>
 
