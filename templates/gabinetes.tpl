@@ -9,6 +9,7 @@
                     <th scope="col">Gamer</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     {if isset($nombre)}
                         <th scope="col"></th>
                         <th scope="col"></th>
@@ -26,7 +27,8 @@
                             <td>No</td>
                         {/if}
                         <td><a href="verKitsAsociados/{$dato->id_gabinete}"><input class="btn btn-info" type="button" value="ver Kit Asociados"></a></td>
-                        <td><img src="data:image/jpg;base64,{$dato->imagen}" width="160px"></td>
+                        <td><img src="data:image/jpg;base64,{$dato->imagen}" width="230px"></td>
+                        <td><a href="verComentario/{$dato->id_gabinete}"><input class="btn btn-warning" type="button" value="Comentarios"></a></td>
                         {if isset($nombre)}
                             <td><a href="borrarGabinete/{$dato->id_gabinete}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
                             <td><a href="editarGabinete/{$dato->id_gabinete}"><input class="btn btn-success" type="button" value="Editar"></a></td>

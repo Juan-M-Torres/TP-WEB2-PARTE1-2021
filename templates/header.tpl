@@ -30,12 +30,19 @@
                 {/if}
             </ul>
         </nav>
-
-        {if isset($nombre)}
-        <div class= "nombreLogin">
-            <h6 class= "loginIngresado"> Hola: {$nombre}</h6>
-            <a href="logout"><button type="button" class="btn btn-danger btn-sm">Log Out</button></a>
-        </div>
-        {/if}
+        {if isset($nombre)}     
+            <div class="nombreLogin">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {$nombre}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="logout">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>  
+            </div>   
+        {/if}  
     </div>
 
