@@ -15,8 +15,6 @@ class viewLogin{
         if(isset($_SESSION['rol'])){
             if($_SESSION['rol'] == 1){
                 $this->smarty->assign('admin', $_SESSION['rol']);
-            }else{
-                $this->smarty->assign('usuario', $_SESSION['rol']);
             }
         }        
     }

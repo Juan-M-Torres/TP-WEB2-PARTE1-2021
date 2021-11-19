@@ -40,7 +40,9 @@ class controllerGabinetes{
 
    function agregarGabinete(){
       $this->authHelper->checkLoggedIn();
-
+      
+      $num = $this->modelGabinete->getGabinetes();
+      $comentario = count($num);
       if(isset($_POST['nombre']) && isset($_POST['marca']) && isset($_POST['gamer']) && isset($_FILES['imagen'])) {
          if(!empty($_POST['nombre']) && !empty($_POST['marca']) && !empty($_POST['gamer']) && !empty($_FILES['imagen'])){
                $nombreAgre = $_POST['nombre'];
@@ -53,13 +55,15 @@ class controllerGabinetes{
                }
                $imagen = $_FILES['imagen']['tmp_name'];
                $img = base64_encode(file_get_contents($imagen));
+               
 
-               $this->modelGabinete->agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img);
-               $this->view->locationGabinetes();     
+               $this->modelGabinete->agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img, $comentario);
+               $this->view->locationGabinetes();           
          }else{
             var_dump("Faltan datos obligatorios");        
          }
       }
+      
    }
 
    function verKitsAsociados($params = null){
@@ -98,4 +102,10 @@ class controllerGabinetes{
          }
       }
    }
+
+   function verComentarios($params = null){
+      $id = $params[':ID'];
+      $this->view->mostrarComentarios($id);
+   }
+   
 }

@@ -15,8 +15,6 @@ class view{
         if(isset($_SESSION['rol'])){
             if($_SESSION['rol'] == 1){
                 $this->smarty->assign('admin', $_SESSION['rol']);
-            }else{
-                $this->smarty->assign('usuario', $_SESSION['rol']);
             }
         }                  
     }
@@ -73,5 +71,10 @@ class view{
     
     function showLoginLocation(){
         header("Location: ".BASE_URL."login");
+    }
+
+    function mostrarComentarios($id){
+        $this->smarty->assign("id",$id);
+        $this->smarty->display("templates/verComentario.tpl");
     }
 }

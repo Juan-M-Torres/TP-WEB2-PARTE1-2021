@@ -20,9 +20,9 @@ class modelGabinete{
         $query->execute(array($id));  
     }
 
-    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img){
-        $query=$this->db->prepare('INSERT INTO gabinete (marca,nombre,gamer,imagen) VALUE (?,?,?,?)');
-        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre, $img));
+    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img, $comentario){
+        $query=$this->db->prepare('INSERT INTO gabinete (marca,nombre,gamer,imagen, id_comentario) VALUE (?,?,?,?,?)');
+        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre, $img, $comentario));
     }
 
     function seleccionarGabinete($id){
@@ -35,5 +35,13 @@ class modelGabinete{
     function editarElgabinete($marcaEdit,$nombreEdit,$gamerEdit,$idEdit){
         $query = $this->db->prepare('UPDATE gabinete SET nombre=?,marca=?,gamer=? WHERE id_gabinete=?');
         $query->execute(array($marcaEdit,$nombreEdit,$gamerEdit,$idEdit));
-    }    
+    } 
+
+    function obtenerGabinete($id){
+        $query=$this->db->prepare('SELECT * FROM gabinete WHERE id_gabinete=?');
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+   
 }
