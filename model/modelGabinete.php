@@ -15,6 +15,14 @@ class modelGabinete{
         return $result;
     }
 
+    function getLimitGabinetes($iniciar){
+        $query = $this->db->prepare('SELECT * FROM gabinete LIMIT :iniciar,2');
+        $query->bindParam(':iniciar', $iniciar, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     function deleteGabinete($id){   
         $query=$this->db->prepare('DELETE FROM gabinete WHERE id_gabinete=?');
         $query->execute(array($id));  

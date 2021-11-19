@@ -29,7 +29,7 @@
         <h3>No hay datos asociados a este gabinete</h3>
     {/if}
 
-    <a class="btn btn-warning" href="gabinetes">Volver atras</a>
+    <a class="btn btn-warning" href="gabinetes?pagina=1">Volver atras</a>
     
 </div>
 

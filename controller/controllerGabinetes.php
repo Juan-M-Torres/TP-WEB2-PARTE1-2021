@@ -25,8 +25,16 @@ class controllerGabinetes{
    }
 
     function gabinetes(){
+      $iniciar = ($_GET['pagina']-1)*2;
+
       $data = $this->modelGabinete->getGabinetes();
-      $this->view->showGabinetes($data);
+      $resultado = $this->modelGabinete->getLimitGabinetes($iniciar);
+      $cantidad = count($data);
+
+      $paginas = $cantidad/2;
+      $paginas = ceil($paginas);
+     
+      $this->view->showGabinetes($resultado, $paginas);
    }
    
  

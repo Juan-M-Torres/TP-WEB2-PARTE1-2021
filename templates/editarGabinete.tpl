@@ -20,7 +20,7 @@
                     </select>
                 </div>
                 <div class="flex">
-                    <a class="btn btn-warning" href="gabinetes">Volver atras</a>
+                    <a class="btn btn-warning" href="gabinetes?pagina=1"">Volver atras</a>
                     <input class="btn btn-success" type="submit" value="Editar"> 
                 </div>
             </form>  

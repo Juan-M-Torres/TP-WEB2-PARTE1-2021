@@ -23,7 +23,7 @@
             <h3 class="link-light">Tu tienda Gamer</h3>
             <ul class=" navbar-nav">
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="home">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="gabinetes">Nuestros Gabinetes</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="gabinetes?pagina=1">Nuestros Gabinetes</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="kit"> Nuestros Kits</a></li>
                 {if !isset($nombre)}
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="login">Login</a></li>

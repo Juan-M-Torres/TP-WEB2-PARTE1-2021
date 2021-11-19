@@ -36,6 +36,17 @@
             {/foreach}
         </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item {if $smarty.get.pagina <= 1} disabled {/if}"><a class="page-link" href="gabinetes?pagina={$smarty.get.pagina - 1}">Anterior</a></li>
+                {for $item=0 to $paginas - 1}
+                    <li class="page-item {if $smarty.get.pagina == $item + 1} active {/if}"><a class="page-link" href="gabinetes?pagina={$item + 1}">{$item + 1}</a></li>
+                {/for}
+                <li class="page-item {if $smarty.get.pagina >= $paginas} disabled {/if}"><a class="page-link" href="gabinetes?pagina={$smarty.get.pagina + 1}">Siguiente</a></li>
+            </ul>
+        </nav>
+    </div>
    
     
      {if isset($nombre)}

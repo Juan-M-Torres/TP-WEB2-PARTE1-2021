@@ -29,8 +29,9 @@ class view{
         $this->smarty->display('templates/componentes.tpl');       
     }
 
-    function showGabinetes($data){
-        $this->smarty->assign('dgabinetes',$data);
+    function showGabinetes($resultado, $paginas){
+        $this->smarty->assign('dgabinetes',$resultado);
+        $this->smarty->assign('paginas',$paginas);
         $this->smarty->display('templates/gabinetes.tpl');
     }
 
@@ -66,7 +67,7 @@ class view{
         header("Location: ".BASE_URL."kit");
     }
     function locationGabinetes(){
-        header("Location: ".BASE_URL."gabinetes");
+        header("Location: ".BASE_URL."gabinetes?pagina=1");
     }
     
     function showLoginLocation(){

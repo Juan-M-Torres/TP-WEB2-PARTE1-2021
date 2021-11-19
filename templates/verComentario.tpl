@@ -14,8 +14,8 @@
                     <input class="form-control" name="puntaje" type="number" placeholder="Puntaje del 1 al 5" required>
                 </div>
                 <div class="flex">
-                <a class="btn btn-warning" href="gabinetes">Volver atras</a>
-                <input class="btn btn-primary" type="submit" value="Cargar">
+                    <a class="btn btn-warning" href="gabinetes?pagina=1">Volver atras</a>
+                    <input class="btn btn-primary" type="submit" value="Cargar">
                 </div>
             </form>
         </div>
@@ -31,7 +31,9 @@
             </ul>
         </div>      
     </div>
-    <br>
+    {if !isset($nombre)}
+        <a class="btn btn-warning" href="gabinetes?pagina=1">Volver atras</a>
+    {/if}
 </div>
 
 <script src="js/app.js"></script>
