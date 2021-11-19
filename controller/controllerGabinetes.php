@@ -114,6 +114,5 @@ class controllerGabinetes{
    function verComentarios($params = null){
       $id = $params[':ID'];
       $this->view->mostrarComentarios($id);
-   }
-   
+   }  
 }

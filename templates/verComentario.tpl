@@ -23,11 +23,7 @@
         <div class="col-7">
             <br>
             <ul>
-                {literal}
-                    <ul class="list-group" v-for="coment in comentarios">
-                        <li v-if="coment.id_comentario" class="list-group-item">{{coment.comentario}} | {{coment.puntaje}}</li>
-                    </ul>
-                {/literal}
+                {include file="templates/vue/comentarios.tpl"}
             </ul>
         </div>      
     </div>
