@@ -11,7 +11,12 @@ class view{
         }
         if(isset($_SESSION['email'])){
             $this->smarty->assign('nombre', $_SESSION['email']);
-        }                 
+        }
+        if(isset($_SESSION['rol'])){
+            if($_SESSION['rol'] == 1){
+                $this->smarty->assign('admin', $_SESSION['rol']);
+            }
+        }                  
     }
 
     function ShowHome(){        
@@ -24,8 +29,9 @@ class view{
         $this->smarty->display('templates/componentes.tpl');       
     }
 
-    function showGabinetes($data){
-        $this->smarty->assign('dgabinetes',$data);
+    function showGabinetes($resultado, $paginas){
+        $this->smarty->assign('dgabinetes',$resultado);
+        $this->smarty->assign('paginas',$paginas);
         $this->smarty->display('templates/gabinetes.tpl');
     }
 
@@ -61,10 +67,15 @@ class view{
         header("Location: ".BASE_URL."kit");
     }
     function locationGabinetes(){
-        header("Location: ".BASE_URL."gabinetes");
+        header("Location: ".BASE_URL."gabinetes?pagina=1");
     }
     
     function showLoginLocation(){
         header("Location: ".BASE_URL."login");
+    }
+
+    function mostrarComentarios($id){
+        $this->smarty->assign("id",$id);
+        $this->smarty->display("templates/verComentario.tpl");
     }
 }

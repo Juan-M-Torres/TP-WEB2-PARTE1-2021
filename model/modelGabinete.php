@@ -15,14 +15,22 @@ class modelGabinete{
         return $result;
     }
 
+    function getLimitGabinetes($iniciar){
+        $query = $this->db->prepare('SELECT * FROM gabinete LIMIT :iniciar,2');
+        $query->bindParam(':iniciar', $iniciar, PDO::PARAM_INT);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     function deleteGabinete($id){   
         $query=$this->db->prepare('DELETE FROM gabinete WHERE id_gabinete=?');
         $query->execute(array($id));  
     }
 
-    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre){
-        $query=$this->db->prepare('INSERT INTO gabinete (marca,nombre,gamer) VALUE (?,?,?)');
-        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre));
+    function agregarGabinete($marcaAgre,$nombreAgre,$gamerAgre, $img, $comentario){
+        $query=$this->db->prepare('INSERT INTO gabinete (marca,nombre,gamer,imagen, id_comentario) VALUE (?,?,?,?,?)');
+        $query->execute(array($marcaAgre,$nombreAgre,$gamerAgre, $img, $comentario));
     }
 
     function seleccionarGabinete($id){
@@ -35,5 +43,13 @@ class modelGabinete{
     function editarElgabinete($marcaEdit,$nombreEdit,$gamerEdit,$idEdit){
         $query = $this->db->prepare('UPDATE gabinete SET nombre=?,marca=?,gamer=? WHERE id_gabinete=?');
         $query->execute(array($marcaEdit,$nombreEdit,$gamerEdit,$idEdit));
-    }    
+    } 
+
+    function obtenerGabinete($id){
+        $query=$this->db->prepare('SELECT * FROM gabinete WHERE id_gabinete=?');
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+   
 }

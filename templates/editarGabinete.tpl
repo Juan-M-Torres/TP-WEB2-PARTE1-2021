@@ -19,15 +19,20 @@
                         <option value="no">No</option>
                     </select>
                 </div>
-                <input class="btn btn-success" type="submit" value="Editar">
+                <div class="flex">
+                    <a class="btn btn-warning" href="gabinetes?pagina=1"">Volver atras</a>
+                    <input class="btn btn-success" type="submit" value="Editar"> 
+                </div>
             </form>  
             <input type="hidden" name="" id="inputGamer" value="{$dato->gamer}">
         {/foreach}
     </div>
-    <br>
-    <a class="btn btn-warning" href="gabinetes">Volver atras</a>
+    
+    
 </div>
 
 <script src="./js/transformadorGamer.js"></script>
-{include file="footer.tpl"}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
 

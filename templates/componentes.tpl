@@ -61,8 +61,10 @@
                         {/foreach}
                         </select>
                     </div>
-                <div>
-                <input class="btn btn-primary" type="submit" style="margin-left: 5px;" value="Agregar">
+                </div>
+                <div class="col-1">
+                    <input class="btn btn-primary" type="submit" style="margin-left: 5px;" value="Agregar">
+                </div>
             </form>
         </div>  
     </div>
