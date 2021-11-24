@@ -8,7 +8,7 @@
                     <th scope="col">Motherboard</th>
                     <th scope="col">Ram</th>
                     <th scope="col"></th>
-                    {if isset($nombre)}
+                    {if isset($Administrador)}
                         <th scope="col"></th>
                         <th scope="col"></th>
                     {/if}
@@ -21,7 +21,7 @@
                     <td>{$dato->motherboard}</td>
                     <td>{$dato->ram} Gb</td>
                     <td><a href="verMas/{$dato->id_kit}"><input class="btn btn-info" type="button" value="Ver descripcion"></a></td>
-                    {if isset($nombre)}
+                    {if isset($Administrador)}
                     <td><a href="borrarKit/{$dato->id_kit}"><input class="btn btn-danger" type="button" value="Borrar"></a></td>
                     <td><a href="editarKit/{$dato->id_kit}"><input class="btn btn-success" type="button" value="Editar"></a></td>
                     {/if}
@@ -30,7 +30,7 @@
             </tbody>
         </table>
     </div>
-     {if isset($nombre)}
+     {if isset($Administrador)}
      <div class="bajar">
         <div class="col-12">
             <form action="agregarKit" class="voltear" method="POST">
@@ -61,10 +61,8 @@
                         {/foreach}
                         </select>
                     </div>
-                </div>
-                <div class="col-1">
-                    <input class="btn btn-primary" type="submit" style="margin-left: 5px;" value="Agregar">
-                </div>
+                <div>
+                <input class="btn btn-primary" type="submit" style="margin-left: 5px;" value="Agregar">
             </form>
         </div>  
     </div>

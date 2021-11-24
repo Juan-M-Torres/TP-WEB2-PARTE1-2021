@@ -1,91 +1,100 @@
 <?php
-require_once "./view/viewLogin.php";
-require_once "./model/modelLogin.php";
-require_once "./helpers/authHelper.php";
+    require_once "./view/viewLogin.php";
+    require_once "./model/modelLogin.php";
+    require_once "./helpers/AuthHelper.php";
 
 class controllerLogin{
     private $model;
     private $view;
-    private $authHelper;
+    private $authHelper; 
 
     function __construct() {
         $this->model = new modelLogin();
         $this->view = new viewLogin();
-        $this->authHelper = new authHelper();
+        $this->authHelper = new AuthHelper();
     }
+
+    
 
     function login(){
         $this->view->showLogin();
     }
 
    function logout(){
-        session_start();
+       session_start();
         session_destroy();
-        $this->view->showHome();
+        $this->view->showLoginLocation();
     }
 
     function verifyLogin(){
-        if(!empty($_POST['email'])&& !empty($_POST['password'])){
+        $data = $this->authHelper->sessionStarted();
+        if($data == false){
+            if(!empty($_POST['email'])&& !empty($_POST['password'])){
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                if(isset($email)){
+                    $user = $this->model->verifyLoginModel($email);
+                    if(isset($user)&& $user){
+                        if($user && password_verify($password, $user->password)){
+                            if($user->admin == 1){
+                                session_start();
+                                $_SESSION['email_admin'] = $email;
+                                header("Location: ".BASE_URL);
+                                
+                            }else if($user->admin == 0){
+                                session_start();
+                                $_SESSION['email'] = $email;
+                                header("Location: ".BASE_URL);
+                            }
+                            
+                        }else{
+                            $this->view->showLogin("Contraseña incorrrecta");
+                        }
+                    }else{
+                        $this->view->showLogin("El usuario no existe");
+                    }
+                }
+            }else{
+                $this->view->showLogin("Ingrese los datos obligatorios");
+            }
+        }else{
+            $this->view->showHome();
+        }
+        
+    }
+    
+
+    function formularioRegistro(){
+        $this->view->showRegistrar();
+    }
+
+    
+    function registrarUsuario(){
+        $data = $this->authHelper->sessionStarted();
+        if($data == false){
+        if(!empty($_POST['email']) && !empty($_POST['password'])){
             $email = $_POST['email'];
             $password = $_POST['password'];
-        
             $user = $this->model->verifyLoginModel($email);
-            $rol = $user->id_rol;
-            if($user && password_verify($password, $user->password)){
-
-                session_start();
-                $_SESSION['email'] = $email;
-                $_SESSION['rol'] = $rol;
-                $this->view->showHome();
+            if($user){
+            $this->view->showRegistrar("El usuario ingresado ya existe");    
             }else{
-                $this->view->showLogin("Acceso denegado");
-            }
+                if(strlen($password)>=6){
+                    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+                    $this->model->insertUser($email, $password);
+                    session_start();
+                    $_SESSION['email'] = $email;
+                    $this->view->showHome();
+                }else{
+                    $this->view->showRegistrar("La contraseña debe ser mayor a 6 caracteres");
+                }
+            }  
+            
+        }
+        }else{
+            $this->view->showHome();
         }
     }
 
-    function registrar(){
-        $this->view->viewRegistro();
-    }
-
-    function registroUsuario(){
-        if(!empty($_POST['email']) && !empty($_POST['password']) && isset($_POST['rol'])){
-            $email = $_POST['email'];
-            $rol = $_POST['rol'];
-            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        }
-        $this->model->insertUser($email, $password, $rol);
-        $this->verifyLogin();
-    }   
-
-    function usuarios(){
-        $this->authHelper->checkLoggedIn();
-
-        $users = $this->model->usersDDBB();
-        $this->view->mostrarUsuarios($users);
-    }
-
-    function borrarUsuario($params = null){
-        $this->authHelper->checkLoggedIn();
-
-        $id = $params[':ID'];
-        $this->model->borrarUsuarioDDBB($id);
-        $this->view->showMessage("Has borrado al usuario con id: $id");
-    }
-
-    function adminUsuario($params = null){
-        $this->authHelper->checkLoggedIn();
-
-        $id = $params[':ID'];
-        $this->model->adminUsuarioDDBB($id);
-        $this->view->showMessage("Has hecho admin al usuario con id: $id");
-    }
-
-    function colaboradorUsuario($params = null){
-        $this->authHelper->checkLoggedIn();
-
-        $id = $params[':ID'];
-        $this->model->colaboradorUsuarioDDBB($id);
-        $this->view->showMessage("Has hecho colaborador al usuario con id: $id");
-    }
     
 }

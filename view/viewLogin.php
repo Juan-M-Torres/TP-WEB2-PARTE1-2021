@@ -11,12 +11,9 @@ class viewLogin{
         }
         if(isset($_SESSION['email'])){
             $this->smarty->assign('nombre', $_SESSION['email']);
+        }else if(isset($_SESSION['email_admin'])){
+            $this->smarty->assign('Administrador', $_SESSION['email_admin']);
         }
-        if(isset($_SESSION['rol'])){
-            if($_SESSION['rol'] == 1){
-                $this->smarty->assign('admin', $_SESSION['rol']);
-            }
-        }        
     }
 
     function showLoginLocation(){
@@ -27,25 +24,14 @@ class viewLogin{
         $this->smarty->assign('titulo', 'Log In');
         $this->smarty->assign('error', $error);
         $this->smarty->display('templates/login.tpl');
-    } 
-     
+    }  
     function showHome(){
         header("Location: ".BASE_URL."home");
     }
-
-    function viewRegistro(){
-        $this->smarty->assign('titulo', 'Registrate');
+    function showRegistrar($error = " "){
+        $this->smarty->assign('titulo', 'Registro');
+        $this->smarty->assign('error', $error);
         $this->smarty->display('templates/registro.tpl');
-    }
-
-    function mostrarUsuarios($users){
-        $this->smarty->assign('users', $users);
-        $this->smarty->display('templates/usuarios.tpl');
-    }
-    
-    function showMessage($message = null){
-        $this->smarty->assign('message', $message);
-        $this->smarty->display('templates/message.tpl');
     }
     
 }

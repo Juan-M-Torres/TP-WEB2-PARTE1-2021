@@ -1,41 +1,36 @@
 <?php
 
-class apiModel{
-
+class ApiModel{
+    
     private $db;
-
+    
     function __construct(){
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_computadoras;charset=utf8', 'root', '');
     }
 
-    function obtenerComentarios(){
+    function getAll(){
         $sentencia = $this->db->prepare('SELECT * FROM comentarios'); 
         $sentencia->execute(); 
         $result = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-
-    function obtenerComentario($id){
-        $sentencia = $this->db->prepare('SELECT * FROM comentarios WHERE id_comentario=?'); 
-        $sentencia->execute(array($id)); 
+    
+    function obtenerComentario($id_comentario){
+        $sentencia = $this->db->prepare('SELECT * FROM comentarios WHERE id_comentario_gabinete=?'); 
+        $sentencia->execute(array($id_comentario)); 
         $result = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
-
-    function insertarComentario($id, $comentario, $puntaje){
-        $sentencia = $this->db->prepare('INSERT INTO comentarios (id_comentario, comentario, puntaje) VALUE(?,?,?)');
-        $sentencia->execute(array($id, $comentario, $puntaje));
+    
+    function deleteComentarioId($id_comentario){
+        $query=$this->db->prepare('DELETE FROM comentarios WHERE id=?');
+        $query->execute(array($id_comentario));
+        return $query->rowCount();
     }
 
-    /*function borrarComentarioDDBB($id){
-        $sentencia = $this->db->prepare("DELETE FROM comentarios WHERE id=?");
-        $sentencia->execute(array($id));
+    function crearComentario($comentario,$puntaje,$id){
+        $sentencia = $this->db->prepare('INSERT INTO comentarios (comentario, puntaje,id_comentario_gabinete) VALUE(?,?,?)');
+        $sentencia->execute(array($comentario,$puntaje,$id));
+        return $sentencia;
     }
-
-    function obtenerIdComentario($id){
-        $sentencia = $this->db->prepare('SELECT * FROM comentarios WHERE id=?'); 
-        $sentencia->execute(array($id)); 
-        $tarea = $sentencia->fetch(PDO::FETCH_OBJ);
-        return $tarea;
-    }*/
 }
